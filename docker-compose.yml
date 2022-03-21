@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   app:
@@ -21,6 +21,14 @@ services:
   db:
     image: "postgres:${POSTGRES_VERSION}"
     environment:
-      - POSTGRES_DB⁼${DB_NAME}
+      - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASS=${DB_PASS}
+      - POSTGRES_PASSWORD=${DB_PASS}
+    expose:
+      - 5432
+    volumes:
+      - postgres_data:/var/lib/postgres/data/
+
+
+volumes:
+   postgres_data:
